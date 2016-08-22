@@ -19,7 +19,7 @@ def destination(request, id):
 	trip = Trip.objects.get(id=id)
 	context = {
 		'trip':Trip.objects.get(id=id),
-		'trip_joiners': trip.trip_joiner.exclude(id=request.session['user'])
+		'trip_joiners': trip.trip_joiner.exclude(id=request.session['user']),
 	}
 	return render(request, 'main/destination.html', context)
 

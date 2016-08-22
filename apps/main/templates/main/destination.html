@@ -26,6 +26,9 @@
 		{% for joiner in trip_joiners %}
 			<p>{{joiner.first_name}} {{joiner.last_name}}</p>
 		{% endfor %}
+		{% if trip.trip_creator.id != requestion.session.user  %}
+			<p>{{trip.trip_creator.first_name}} {{trip.trip_creator.last_name}}</p>
+		{% endif %}
 	</div>
 </body>
 </html>
