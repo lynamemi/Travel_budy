@@ -58,10 +58,14 @@
 			{% for trip in trips %}
 				{% if trip.trip_creator_id != request.session.user %}
 				<tr>
+					{% for user in users %}
+					{% if user.id == trip.trip_creator_id %}
+					<td>{{user.first_name}} {{user.last_name}}</td>
+					{% endif %}
+					{% endfor %}
 					<td><a href="/destination/{{trip.id}}">{{trip.destination}}</a></td>
 					<td>{{trip.start_date}}</td>
 					<td>{{trip.end_date}}</td>
-					<td>{{trip.description}}</td>
 					<td>
 						<form action="/join_trip" method="post">
 							{% csrf_token %}

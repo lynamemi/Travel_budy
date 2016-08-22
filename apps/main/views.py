@@ -11,6 +11,7 @@ def index(request):
 def travels(request):
 	context = {
 		'trips':Trip.objects.all(),
+		'users':User.objects.all(),
 		'trip_joiners':Trip.objects.filter(trip_joiner=request.session['user'])
 		}
 	return render(request, 'main/travels.html', context)
