@@ -24,14 +24,22 @@
 				<th>Plan</th>
 			</tr>				
 			{% for trip in trips %}
-			<tr>
-				{# if trip.user == request.session.user #}
+				{% if trip.trip_creator_id == request.session.user %}
+				<tr>	
 					<td><a href="/destination/{{trip.id}}">{{trip.destination}}</a></td>
 					<td>{{trip.start_date}}</td>
 					<td>{{trip.end_date}}</td>
 					<td>{{trip.description}}</td>
 				</tr>
-				{# endif #}
+				{% endif %}
+			{% endfor %}
+			{% for joiner in trip_joiners %}
+			<tr>
+				<td><a href="/destination/{{joiner.id}}">{{joiner.destination}}</a></td>
+				<td>{{joiner.start_date}}</td>
+				<td>{{joiner.end_date}}</td>
+				<td>{{joiner.description}}</td>
+			</tr>
 			{% endfor %}
 		</table>
 	</div>
@@ -48,7 +56,7 @@
 				<th>Do You Want to Join?</th>
 			</tr>				
 			{% for trip in trips %}
-				{% if trip.user != request.session.user %}
+				{% if trip.trip_creator_id != request.session.user %}
 				<tr>
 					<td><a href="/destination/{{trip.id}}">{{trip.destination}}</a></td>
 					<td>{{trip.start_date}}</td>
