@@ -13,7 +13,7 @@ class UserManager(models.Manager):
 		errors=[]
 		if not len(data['first_name']) > 2 or not number_check.match(data['first_name']) or not len(data['last_name']) > 2 or not number_check.match(data['last_name']): 
 			errors.append("Names must be no fewer than 3 characters & contain letters only")
-		if not EMAIL_REGEX.match(data['email']) and not len(data['email']) > 1:
+		if not EMAIL_REGEX.match(data['email']) or not len(data['email']) > 1:
 			errors.append("Your email is invalid")	
 		if not len(data['password']) > 7:
 			errors.append("Password should be at least 8 characters")
