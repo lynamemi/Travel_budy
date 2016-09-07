@@ -23,7 +23,7 @@ class Trip(models.Model):
 	description=models.CharField(max_length=100)
 	start_date = models.DateField()
 	end_date = models.DateField()
-	traveler = models.ManyToManyField('loginreg.User', related_name="userstrips")
+	# traveler = models.ManyToManyField('loginreg.User', related_name="userstrips")
 	trip_joiner = models.ManyToManyField('loginreg.User', related_name="jointrip")
 	trip_creator = models.ForeignKey('loginreg.User', related_name="usertrip")
 	created_at = models.DateTimeField(auto_now_add = True)
